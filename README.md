@@ -1,10 +1,10 @@
-# Example Azure Function using F# on .NET 7
+# Example Azure Function using F# on .NET 8
 
-This repo shows a minimal example of how to write an Azure function using F# and run it on .NET 7 isolated mode.
+This repo shows a minimal example of how to write an Azure function using F# and run it on .NET 8 isolated mode.
 
 It should be as simple as cloning the repo and running the function app.
 
-Built using Microsoft Visual Studio Community 2022 (64-bit) Version 17.5.5 and Dotnet 7 version 7.0.5.
+Built using Microsoft Visual Studio Community 2022 (64-bit) Version 17.9 and Dotnet 8 version 8.0.204.
 
 ### GOTCHAS
 
