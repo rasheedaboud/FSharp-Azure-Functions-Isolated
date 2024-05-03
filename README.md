@@ -6,9 +6,8 @@ It should be as simple as cloning the repo and running the function app.
 
 Built using Microsoft Visual Studio Community 2022 (64-bit) Version 17.9 and Dotnet 8 version 8.0.204.
 
-### GOTCHAS
+### ASP.NET Core Integration
 
-I ran into a couple of issues when trying to publish to app to azure:
-1. When publishing to azure I could not get linux to work. However windows deploy seems to work fine. Seems linked to this issue [Issue 556](https://github.com/Azure/azure-functions-dotnet-worker/issues/556). I tried all workarounds suggested but alas nothing seemed to work.
-2. When publishing I had success when configuring Deployment mode:Self Contained and Target Runtime:Portable.
+The Azure Functions team added the ability to integrate function with asp.net core HttpRequest and response types. I personally prefer this approach to using the HttpRequestData. 
 
+Head over [here]("https://learn.microsoft.com/en-us/azure/azure-functions/dotnet-isolated-process-guide?tabs=windows#aspnet-core-integration") to learn more about how to enable ASP.NET Core integration for HTTP requests in your own projects.

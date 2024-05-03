@@ -1,6 +1,8 @@
 ﻿open Microsoft.Extensions.Hosting
 
 HostBuilder()
-    .ConfigureFunctionsWorkerDefaults()
+    .ConfigureFunctionsWebApplication()
     .Build()
-    .Run()
+    .RunAsync()
+|> Async.AwaitTask
+|> Async.RunSynchronously

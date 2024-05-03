@@ -2,18 +2,26 @@
 
 open Microsoft.Azure.Functions.Worker
 open Microsoft.Extensions.Logging
-open Microsoft.Azure.Functions.Worker.Http
-open System.Net
+open Microsoft.AspNetCore.Http
+open Microsoft.AspNetCore.Mvc
 
 type Execute(logger: ILogger<Execute>) =
-    
-    [<Function("Execute")>]        
-    member _.Run([<HttpTrigger()>]  req:HttpRequestData, executionContext:FunctionContext) =
+
+    [<Function(nameof Execute)>]
+    member _.Run
+        (
+            [<HttpTrigger(AuthLevel = AuthorizationLevel.Anonymous, Methods = [| "GET" |], Route = "execute")>] req: HttpRequest,
+            executionContext: FunctionContext,
+            [<FromQuery>] name: string
+        ) =
         task {
             logger.LogInformation($"Hello at {System.DateTime.UtcNow} from an Azure function using F# on .NET 8.")
-            let response = req.CreateResponse(HttpStatusCode.OK)
-            do! response.WriteStringAsync("Hello World")
-            return response
-        }
-        
 
+            let response =
+                if System.String.IsNullOrEmpty(name) then
+                    "Hello from F# and dotnet 8!"
+                else
+                    $"Hello {name}! F# is amazing!"
+
+            return OkObjectResult(response)
+        }
